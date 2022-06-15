@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app
+  namespace: test-dev
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: factorialapp
+  template:
+    metadata:
+      labels:
+        app: factorialapp
+    spec:
+      containers:
+        - name: factorialapp
+          image: akhigbe2017/factorial:1.0.0
+          ports:
+            - name: tcp
+              containerPort: 5000
